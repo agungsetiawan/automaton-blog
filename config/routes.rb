@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   scope "admin" do
     resources :users, except: [:show, :destroy]
+    get "/" => "dashboard#index", as: "dashboard"
   end
 
   get "/login" => "sessions#new"

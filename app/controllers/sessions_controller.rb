@@ -8,8 +8,7 @@ class SessionsController < ApplicationController
 
   	if @user && @user.authenticate(params[:session][:password])
   	  session[:user_id]=@user.id
-  	  #todo
-  	  #redirect_to dashboard_path
+  	  redirect_to dashboard_path
   	else
   	  redirect_to login_path, alert: 'Username and or password incorret'
   	end
