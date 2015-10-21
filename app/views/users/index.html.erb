@@ -1,0 +1,26 @@
+<h1>List of users</h1>
+
+<%= link_to "Create new user", new_user_path, class: "btn btn-default" %>
+
+<% if notice %>
+  <div><%= notice %></div>
+<% end %>
+
+<table class="table">
+  <thead>
+  	<tr>
+  	  <th>Username</th>
+  	  <th>Email</th>
+  	  <th>Edit</th>
+  	</tr>
+  </thead>
+  <tbody>
+    <% @users.each do |u| %>
+  	<tr>
+  	  <td><%= u.username %></td>
+  	  <td><%= u.email %></td>
+  	  <td><%= link_to "Edit", edit_user_path(u) %></td>
+  	</tr>
+  	<% end %>
+  </tbody>
+</table>
