@@ -23,10 +23,12 @@ class CategoriesController < ApplicationController
 
   def edit
   	@category=Category.find_by_id(params[:id])
+  	redirect_to categories_path unless @category
   end
 
   def update
   	@category=Category.find_by_id(params[:id])
+    redirect_to categories_path unless @category
     
     cat_params=category_params
     cat_params[:slug]=params[:category][:name].downcase.gsub(" ","-")

@@ -27,7 +27,8 @@ class UsersController < ApplicationController
 
   def update
   	@user=User.find_by_id(params[:id])
-
+    redirect_to users_path unless @user && @user.id==current_user.id
+    
   	if @user.update_attributes(user_params)
   	  redirect_to users_path, notice: "User has been updated"
   	else
