@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   scope "admin" do
     resources :users, except: [:show, :destroy]
     get "/" => "dashboard#index", as: "dashboard"
+
+    resources :categories, except: [:show]
   end
 
   get "/login" => "sessions#new"

@@ -1,0 +1,36 @@
+<h1>Categories</h1>
+
+<%= link_to "New Category", new_category_path, class: "btn btn-default" %>
+
+<% if notice %>
+  <div>
+  <%= notice %>
+  </div>
+<% end %>
+
+<% if @categories.count == 0 %>
+  <div>
+    There is no category yet. <%= link_to "Create new", new_category_path %>
+  </div>
+<% else %>
+<table class="table">
+  <thead>
+  	<tr>
+  	  <td>Name</td>
+  	  <td>Slug</td>
+  	  <td>Description</td>
+  	  <td>Edit</td>
+  	</tr>
+  </thead>
+  <tbody>
+  	<% @categories.each do |c| %>
+    <tr>
+      <td><%= c.name %></td>
+      <td><%= c.slug %></td>
+      <td><%= c.description %></td>
+      <td><%= link_to "Edit", edit_category_path(c) %></td>
+    </tr>
+  	<% end %>
+  </tbody>
+</table>
+<% end %>
