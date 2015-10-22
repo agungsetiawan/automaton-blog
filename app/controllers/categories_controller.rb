@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
 
   def create
   	@category=Category.new(category_params)
-    @category.slug=@category.name.downcase.gsub(" ","-")
+    @category.slug=@category.name.downcase.gsub(/[^0-9a-z]/i,"-")
 
   	if @category.save
       redirect_to categories_path, notice: "Category has been added"
@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
     redirect_to categories_path unless @category
     
     cat_params=category_params
-    cat_params[:slug]=params[:category][:name].downcase.gsub(" ","-")
+    cat_params[:slug]=params[:category][:name].downcase.gsub(/[^0-9a-z]/i,"-")
 
     #another workaround
     #@category.attributes(category_params)
