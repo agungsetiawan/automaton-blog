@@ -20,6 +20,7 @@
   	  <td>Category</td>
   	  <td>Content</td>
   	  <td>Status</td>
+      <td>Writer</td>
   	  <td>Edit</td>
   	</tr>
   </thead>
@@ -30,6 +31,7 @@
       <td><%= a.category.name %></td>
       <td><%= a.body %></td>
       <td><%= a.published ? "Published" : "Draft" %></td>
+      <td><%= a.user.username %></td>
       <td>
       <% if a.user_id == current_user.id %>
         <%= link_to "Edit",edit_article_path(a) %>
