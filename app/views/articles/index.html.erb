@@ -1,0 +1,42 @@
+<h1>Articles</h1>
+
+<%= link_to "New Article", new_article_path, class: "btn btn-default" %>
+
+<% if notice %>
+  <div>
+    <%= notice %>
+  </div>
+<% end %>
+
+<% if @articles.count == 0%>
+<div>
+  There is no article yet.
+</div>
+<% else %>
+<table class="table">
+  <thead>
+  	<tr>
+  	  <td>Title</td>
+  	  <td>Category</td>
+  	  <td>Content</td>
+  	  <td>Status</td>
+  	  <td>Edit</td>
+  	</tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |a| %>
+    <tr>
+      <td><%= a.title %></td>
+      <td><%= a.category.name %></td>
+      <td><%= a.body %></td>
+      <td><%= a.published ? "Published" : "Draft" %></td>
+      <td>
+      <% if a.user_id == current_user.id %>
+        <%= link_to "Edit",edit_article_path(a) %>
+      <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

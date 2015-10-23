@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     resources :users, except: [:show, :destroy]
     get "/" => "dashboard#index", as: "dashboard"
 
-    resources :categories, except: [:show]
+    resources :categories, except: [:show, :destroy]
+    resources :articles, except: [:show, :destroy]
   end
 
   get "/login" => "sessions#new"
