@@ -1,1 +1,35 @@
 <h1>Dashboard</h1>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Article statistic</div>
+  <div class="panel-body">
+    <div class="well">
+	  Article written by me : <%= @my_article_count %>
+	</div>
+
+	<div>
+	  All total article : <%= @article_count %>
+	</div>
+
+	<div>
+	  Contributors
+	  <table class="table table-striped">
+	  	<thead>
+	  	  <tr>
+	  	    <td>Username</td>
+	  		<td>Total Article</td>
+	  	  </tr>
+	  	</thead>
+	  	<tbody>
+	  	  <% @users.each do |u| %>
+	  	  <tr>
+	  	    <td><%= u.username %></td>
+	  	    <td><%= u.articles.count %></td>
+	  	  </tr>
+	  	  <% end %>	
+	  	</tbody>
+	  </table>
+	</div>
+  </div>
+</div>
+

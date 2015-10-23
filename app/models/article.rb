@@ -7,4 +7,10 @@ class Article < ActiveRecord::Base
   validates :body, presence: true 
   validates :category, presence: true 
 
+  def self.count_article(user=nil)
+    return self.count if user.nil?
+
+    self.where(user_id: user.id).count
+  end
+
 end
