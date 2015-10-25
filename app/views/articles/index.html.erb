@@ -29,7 +29,7 @@
     <tr>
       <td><%= a.title %></td>
       <td><%= a.category.name %></td>
-      <td><%= a.body %></td>
+      <td><%= truncate(a.body, length: 200, omission: '...') %></td>
       <td><%= a.published ? "Published" : "Draft" %></td>
       <td><%= a.user.username %></td>
       <td data-no-turbolink>
