@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get "/" => "dashboard#index", as: "dashboard"
 
     resources :categories, except: [:show, :destroy]
-    resources :articles, except: [:show, :destroy]
+    resources :articles, except: [:show, :destroy] 
   end
 
   get "/login" => "sessions#new"
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
 
   get '/:id' => 'articles#show', as: 'articles_show'
+  post ':article_id/comment/' => 'comments#create', as: 'create_comment'
 
   
   # The priority is based upon order of creation: first created -> highest priority.
