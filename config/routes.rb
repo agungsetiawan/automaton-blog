@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'articles#show_all'
+
   scope "admin" do
     resources :users, except: [:show, :destroy]
     get "/" => "dashboard#index", as: "dashboard"
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
   delete "/logout" => "sessions#destroy"
+
+  get '/:id' => 'articles#show', as: 'articles_show'
 
   
   # The priority is based upon order of creation: first created -> highest priority.

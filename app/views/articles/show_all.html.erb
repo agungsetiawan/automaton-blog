@@ -1,0 +1,10 @@
+<% @articles.each do |a| %>
+<div>
+  <h2><%= link_to a.title, articles_show_path(a) %></h2>
+  <span><b><%= a.created_at.strftime("%m/%d/%Y") %></b></span>
+  <span><b><%= a.user.username %></b></span>
+  <div>
+    <%= truncate(a.body, length: 900, escape: false) %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,9 @@
+<h1><%= @article.title %></h1>
+
+<div>
+  <div>
+  	<span><b><%= @article.created_at.strftime("%m/%d/%Y") %></b></span>
+    <span><b><%= @article.user.username %></b></span>
+  </div>
+  <%= @article.body.html_safe %>
+</div>

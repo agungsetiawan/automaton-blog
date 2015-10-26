@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  before_action :require_login
+  before_action :require_login, except: [:show, :show_all]
 
   def index
     @articles=Article.order(created_at: :desc)
@@ -55,6 +55,15 @@ class ArticlesController < ApplicationController
       render 'edit'
     end
 
+  end
+
+  def show_all
+    @articles=Article.order(created_at: :desc)
+  end
+
+  def show
+    @article=Article.find_by_id(params[:id])
+    redirect_to root_path unless @article
   end
 
   private
