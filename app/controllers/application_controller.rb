@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
+  before_action :populate_categories
 
   def require_login
   	redirect_to login_path unless session[:user_id]
@@ -11,5 +12,9 @@ class ApplicationController < ActionController::Base
 
   def current_user
   	@user=User.find_by_id(session[:user_id])
+  end
+
+  def populate_categories
+    @categories_menu = Category.all
   end
 end

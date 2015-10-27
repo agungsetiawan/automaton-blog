@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get '/:id' => 'articles#show', as: 'articles_show'
   post ':article_id/comment/' => 'comments#create', as: 'create_comment'
 
+  get '/categories/:id' => 'categories#show_article', as: 'category_articles'
+
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

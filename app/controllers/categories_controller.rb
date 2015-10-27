@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 
-  before_action :require_login
+  before_action :require_login, except: [:show_article]
 
   def index
     @categories=Category.order(name: :asc)
@@ -43,6 +43,15 @@ class CategoriesController < ApplicationController
   	else
   	  render 'edit'
   	end
+  end
+
+  def show_article
+    @category = Category.find_by_id(params[:id])
+    @articles = @category.articles
+
+    respond_to do |format|
+      format.html {render 'articles/show_all', layout: 'frontside'}
+    end
   end
 
   private

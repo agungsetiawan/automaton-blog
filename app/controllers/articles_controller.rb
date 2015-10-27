@@ -59,11 +59,19 @@ class ArticlesController < ApplicationController
 
   def show_all
     @articles=Article.order(created_at: :desc)
+
+    respond_to do |format|
+      format.html { render layout: 'frontside' }
+    end
   end
 
   def show
     @article=Article.find_by_id(params[:id])
     redirect_to root_path unless @article
+
+    respond_to do |format|
+      format.html {render layout: 'frontside'}
+    end
   end
 
   private
