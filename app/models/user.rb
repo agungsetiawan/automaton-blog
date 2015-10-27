@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   #validates :password, presence: true
   validates :bio, presence: true
 
+  def to_param
+  	"#{id}-#{username}"
+  end
+
 end

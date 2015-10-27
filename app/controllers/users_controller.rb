@@ -36,6 +36,15 @@ class UsersController < ApplicationController
   	end
   end
 
+  def show_article
+    @user = User.find_by_id(params[:id])
+    @articles = @user.articles
+
+    respond_to do |format|
+      format.html {render 'articles/show_all', layout: 'frontside'}
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :bio)

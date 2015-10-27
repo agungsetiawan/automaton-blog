@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post ':article_id/comment/' => 'comments#create', as: 'create_comment'
 
   get '/categories/:id' => 'categories#show_article', as: 'category_articles'
+  get '/authors/:id' => 'users#show_article', as: 'author_articles'
 
   
   # The priority is based upon order of creation: first created -> highest priority.

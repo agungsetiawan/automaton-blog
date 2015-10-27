@@ -3,7 +3,7 @@
 <div>
   <div>
   	<span><b><%= @article.created_at.strftime("%m/%d/%Y") %></b></span>
-    <span><b><%= @article.user.username %></b></span>
+    <span><b><%= link_to @article.user.username, author_articles_path(@article.user) %></b></span>
   </div>
   <%= @article.body.html_safe %>
 </div>
